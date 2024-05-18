@@ -5,6 +5,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     overflow-x: hidden;
+    transition: background-color 0.5s ease-in-out;
 }
 
 #timer-section {
@@ -33,11 +34,15 @@ body {
     border-radius: 4px;
     padding: 2px 12px;
     cursor: pointer;
-    background: none;
 }
 
-#active-button {
-    background: rgba(0, 0, 0, 0.1) !important;
+#pomodoro-button {
+    background: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+#short-button, #long-button {
+    background: none;
 }
 
 #timer-text {
