@@ -1,7 +1,7 @@
 body {
     overflow-x: hidden;
     color: white;
-    background-color: red;
+    background-color: rgb(186, 73, 73);
     margin: 0 auto;
     max-width: 600px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -13,12 +13,48 @@ body {
 }
 
 #timer-box {
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.25);
-    width: 480px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 400px;
     text-align: center;
+    padding: 1rem;
+}
+
+#button-section {
+    display: flex;
+    justify-content: center;
+}
+
+#button-section > button {
+    color: white;
+    border: medium;
+    border-radius: 4px;
+    padding: 2px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    background: none;
+}
+
+#active-button {
+    background: rgba(0, 0, 0, 0.1) !important;
 }
 
 #timer-text {
-    font-size: 64px;
+    font-size: 96px;
+    margin: 8px;
+}
+
+#start-button {
+    cursor: pointer;
+    border: medium;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+    font-size: 24px;
+    height: 4rem;
+    color: rgb(186, 73, 73);
+    font-weight: bold;
+    width: 200px;
+    background-color: white;
+    transition: color 0.5s ease-in-out;
 }
