@@ -84,7 +84,7 @@ function startCountdown() {
 
 function stopCountdown() {
     clearInterval(countdownIntervalID);
-    tickingAudio.pause();
+    tickingAudio.load();
     resetButton();
 }
 
