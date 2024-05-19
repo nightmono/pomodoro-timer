@@ -1,12 +1,10 @@
 var countdownIntervalID = null;
 var timeLeft = 25 * 60;
 
-/* 
-    Pomodoros are the work periods (the 25 minutes).
-    After 4 after completed, a long break is taken instead of a short.
-*/
+// Pomodoros are the work periods (the 25 minutes).
+// After 4 after completed, a long break is taken instead of a short.
 var pomodoros = 1;
-var currentTimerMode = "pomodoro";
+var currentTimerMode = "Pomodoro";
 
 var tickingAudio = document.getElementById("ticking-audio");
 var alarmAudio = document.getElementById("alarm-audio");
@@ -38,7 +36,7 @@ function updateTitle() {
 }
 
 function timerOver() {
-    if (currentTimerMode === "pomodoro") {
+    if (currentTimerMode === "Pomodoro") {
         if (pomodoros % 4 === 0) {
             longClick();
         } else {
@@ -46,6 +44,7 @@ function timerOver() {
         }
 
         pomodoros += 1;
+
     } else {
         pomodoroClick();
     }
@@ -91,6 +90,9 @@ function stopCountdown() {
     resetButton();
 }
 
+// A later improvement would be making all the click functions into one rather
+// three.
+
 function pomodoroClick() {
     stopCountdown();
 
@@ -102,7 +104,7 @@ function pomodoroClick() {
     document.getElementById("pomodoro-button").style.background = "rgba(0, 0, 0, 0.1)";
     document.getElementById("pomodoro-button").style.fontWeight = "bold";
 
-    currentTimerMode = "pomodoro";
+    currentTimerMode = "Pomodoro";
     timeLeft = 25 * 60;
     document.getElementById("timer-text").textContent = "25:00";
 
@@ -123,7 +125,7 @@ function shortClick() {
     document.getElementById("short-button").style.background = "rgba(0, 0, 0, 0.1)";
     document.getElementById("short-button").style.fontWeight = "bold";
 
-    currentTimerMode = "short"; 
+    currentTimerMode = "Short Break"; 
     timeLeft = 5 * 60;
     document.getElementById("timer-text").textContent = "05:00";
 
@@ -140,7 +142,7 @@ function longClick() {
     document.getElementById("long-button").style.background = "rgba(0, 0, 0, 0.1)";
     document.getElementById("long-button").style.fontWeight = "bold";
 
-    currentTimerMode = "long";
+    currentTimerMode = "Long Break";
     timeLeft = 15 * 60;
     document.getElementById("timer-text").textContent = "15:00";
 
