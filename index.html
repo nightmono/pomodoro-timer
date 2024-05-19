@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="timer.js"></script>
 </head>
 
 <body>
@@ -17,6 +16,9 @@
             <p class="align-right"><a href="https://github.com/nightmono/pomodoro-timer"><img src="github-mark-white.svg" alt="GitHub Logo" height="16px"> Github</a></p>
         </div>
     </header>
+
+    <audio id="ticking-audio" src="ticking.mp3"></audio>
+    <audio id="alarm-audio" src="alarm.mp3"></audio>
 
     <div id="timer-section">
         <div id="timer-box">
@@ -32,6 +34,8 @@
         </div>
     </div>
     <p id="pomodoro-counter"># 1</p>
+    
+    <script src="timer.js"></script>
 
 </body>
 

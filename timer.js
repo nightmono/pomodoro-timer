@@ -8,6 +8,9 @@ var timeLeft = 25 * 60;
 var pomodoros = 1;
 var currentTimerMode = "pomodoro";
 
+var tickingAudio = document.getElementById("ticking-audio");
+var alarmAudio = document.getElementById("alarm-audio");
+
 document.getElementById("pomodoro-button").style.background = "rgba(0, 0, 0, 0.1)";
 document.getElementById("pomodoro-button").style.fontWeight = "bold";
 
@@ -51,6 +54,8 @@ function timerOver() {
 function countdown() {
     timeLeft -= 1;
 
+    tickingAudio.play();
+
     var timerText = document.getElementById("timer-text");
 
     var minutes = String(parseInt(timeLeft / 60)).padStart(2, "0");
@@ -61,6 +66,7 @@ function countdown() {
     updateTitle();
 
     if (timeLeft <= 0) {
+        alarmAudio.play();
         timerOver();
     }
 }
@@ -78,6 +84,7 @@ function startCountdown() {
 
 function stopCountdown() {
     clearInterval(countdownIntervalID);
+    tickingAudio.pause();
     resetButton();
 }
 
