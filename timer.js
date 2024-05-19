@@ -54,8 +54,6 @@ function timerOver() {
 function countdown() {
     timeLeft -= 1;
 
-    tickingAudio.play();
-
     var timerText = document.getElementById("timer-text");
 
     var minutes = String(parseInt(timeLeft / 60)).padStart(2, "0");
@@ -73,6 +71,9 @@ function countdown() {
 
 function startCountdown() {
     countdownIntervalID = setInterval(countdown, 1000);
+    
+    tickingAudio.loop = true;
+    tickingAudio.play();
 
     var startButton = document.getElementById("start-button");
     startButton.textContent = "PAUSE";
@@ -84,7 +85,9 @@ function startCountdown() {
 
 function stopCountdown() {
     clearInterval(countdownIntervalID);
-    tickingAudio.load();
+    tickingAudio.loop = false;
+    tickingAudio.pause();
+    tickingAudio.currentTime = 0;
     resetButton();
 }
 
