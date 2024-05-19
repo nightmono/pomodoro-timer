@@ -1,6 +1,13 @@
 var countdownIntervalID = null;
 var timeLeft = 25 * 60;
 
+/* 
+    Pomodoros are the work periods (the 25 minutes).
+    After 4 after completed, a long break is taken instead of a short.
+*/
+var pomodoros = 1;
+var currentTimerMode = "pomodoro";
+
 document.getElementById("pomodoro-button").style.background = "rgba(0, 0, 0, 0.1)";
 document.getElementById("pomodoro-button").style.fontWeight = "bold";
 
@@ -15,8 +22,25 @@ function resetButton() {
 
 function resetTimerButtons() {
     document.getElementById("pomodoro-button").style.background = "none";
+    document.getElementById("pomodoro-button").style.fontWeight = "normal";
     document.getElementById("short-button").style.background = "none"
+    document.getElementById("short-button").style.fontWeight = "normal";
     document.getElementById("long-button").style.background = "none"
+    document.getElementById("long-button").style.fontWeight = "normal";
+}
+
+function timerOver() {
+    if (currentTimerMode === "pomodoro") {
+        if (pomodoros % 4 === 0) {
+            longClick();
+        } else {
+            shortClick();
+        }
+
+        pomodoros += 1;
+    } else {
+        pomodoroClick();
+    }
 }
 
 function countdown() {
@@ -28,6 +52,10 @@ function countdown() {
     var seconds = String(timeLeft % 60).padStart(2, "0");
 
     timerText.textContent = `${minutes}:${seconds}`
+
+    if (timeLeft <= 0) {
+        timerOver();
+    }
 }
 
 function startCountdown() {
@@ -39,7 +67,6 @@ function startCountdown() {
     startButton.style.marginTop = "14px";
     startButton.style.marginBottom = "0";
     startButton.onclick = stopCountdown;
-
 }
 
 function stopCountdown() {
@@ -58,8 +85,13 @@ function pomodoroClick() {
     document.getElementById("pomodoro-button").style.background = "rgba(0, 0, 0, 0.1)";
     document.getElementById("pomodoro-button").style.fontWeight = "bold";
 
+    currentTimerMode = "pomodoro";
     timeLeft = 25 * 60;
-    document.getElementById("timer-text").textContent = "25:00";}
+    document.getElementById("timer-text").textContent = "25:00";
+
+    var counter = document.getElementById("pomodoro-counter");
+    counter.textContent = `# ${pomodoros}`;
+}
 
 function shortClick() {
     stopCountdown();
@@ -72,6 +104,7 @@ function shortClick() {
     document.getElementById("short-button").style.background = "rgba(0, 0, 0, 0.1)";
     document.getElementById("short-button").style.fontWeight = "bold";
 
+    currentTimerMode = "short"; 
     timeLeft = 5 * 60;
     document.getElementById("timer-text").textContent = "05:00";
 }
@@ -86,6 +119,7 @@ function longClick() {
     document.getElementById("long-button").style.background = "rgba(0, 0, 0, 0.1)";
     document.getElementById("long-button").style.fontWeight = "bold";
 
+    currentTimerMode = "long";
     timeLeft = 15 * 60;
     document.getElementById("timer-text").textContent = "15:00";
 }
