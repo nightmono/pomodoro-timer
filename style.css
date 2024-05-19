@@ -8,6 +8,20 @@ body {
     transition: background-color 0.5s ease-in-out;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.align-right {
+    text-align: right;
+}
+
 #timer-section {
     display: flex;
     justify-content: center;
