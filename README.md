@@ -2,6 +2,8 @@
 
 A Pomodoro Technique timer website. My first JavaScript app project.
 
+![Preview of the app](preview.png)
+
 [You can try out the live demo here.](https://nightmono.github.io/pomodoro-timer/)
 
 This project is very much a handmade-copy of [pomofocus.io](https://pomofocus.io/) using raw HTML/CSS and JavaScript. 
