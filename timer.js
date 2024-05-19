@@ -29,6 +29,11 @@ function resetTimerButtons() {
     document.getElementById("long-button").style.fontWeight = "normal";
 }
 
+function updateTitle() {
+    var timerText = document.getElementById("timer-text");
+    document.title = `${timerText.textContent} - ${currentTimerMode}`;
+}
+
 function timerOver() {
     if (currentTimerMode === "pomodoro") {
         if (pomodoros % 4 === 0) {
@@ -51,7 +56,9 @@ function countdown() {
     var minutes = String(parseInt(timeLeft / 60)).padStart(2, "0");
     var seconds = String(timeLeft % 60).padStart(2, "0");
 
-    timerText.textContent = `${minutes}:${seconds}`
+    timerText.textContent = `${minutes}:${seconds}`;
+
+    updateTitle();
 
     if (timeLeft <= 0) {
         timerOver();
@@ -89,6 +96,8 @@ function pomodoroClick() {
     timeLeft = 25 * 60;
     document.getElementById("timer-text").textContent = "25:00";
 
+    updateTitle();
+
     var counter = document.getElementById("pomodoro-counter");
     counter.textContent = `# ${pomodoros}`;
 }
@@ -107,6 +116,8 @@ function shortClick() {
     currentTimerMode = "short"; 
     timeLeft = 5 * 60;
     document.getElementById("timer-text").textContent = "05:00";
+
+    updateTitle();
 }
 
 function longClick() {
@@ -122,4 +133,6 @@ function longClick() {
     currentTimerMode = "long";
     timeLeft = 15 * 60;
     document.getElementById("timer-text").textContent = "15:00";
+
+    updateTitle();
 }
