@@ -1,4 +1,4 @@
-# Pomodoro Timer
+# 🍅⏲ Pomodoro Timer
 
 A Pomodoro Technique timer website. My first JavaScript app project.
 
